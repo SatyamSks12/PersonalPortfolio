@@ -31,19 +31,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://portfolio-sks-seven.vercel.app/case-study/support-copilot</loc>
+    <loc>https://portfolio-sks-seven.vercel.app/case-study/ecommerce-multi-agent-copilot</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://portfolio-sks-seven.vercel.app/case-study/agent-commerce</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://portfolio-sks-seven.vercel.app/case-study/meeting-iq</loc>
+    <loc>https://portfolio-sks-seven.vercel.app/case-study/enterprise-banking-rag</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -54,5 +48,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://portfolio-sks-seven.vercel.app/case-study/healthcare-management-system</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
-

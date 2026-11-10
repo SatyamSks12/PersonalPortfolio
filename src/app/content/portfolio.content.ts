@@ -12,6 +12,17 @@ export interface ProjectItem {
   architectureDetails: string;
 }
 
+export interface ArchiveProjectItem {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+  githubUrl: string;
+  demoVideoUrl?: string;
+  icon: 'chart' | 'wallet' | 'user' | 'fire' | 'camera';
+}
+
 export interface ExpertiseRow {
   index: string;
   title: string;
@@ -130,6 +141,9 @@ export interface PortfolioContent {
   projects: {
     sectionLabel: string;
     items: ProjectItem[];
+    archiveHeading: string;
+    archiveIntro: string;
+    archiveItems: ArchiveProjectItem[];
   };
   contact: {
     pillLabel: string;
@@ -369,60 +383,121 @@ export const PORTFOLIO_CONTENT: PortfolioContent = {
     marqueeItems: ['GENAI', 'AGENTS', 'BACKEND', 'FULL-STACK', 'ARCHITECTURE']
   },
   projects: {
-    sectionLabel: 'MY WORK',
+    sectionLabel: 'SELECTED WORKS',
     items: [
       {
-        id: 'support-copilot',
+        id: 'ecommerce-multi-agent-copilot',
         index: '01',
-        name: 'Support Copilot',
-        categoryLabel: 'MULTI-AGENT SUPPORT TRIAGE',
+        name: 'E-Commerce Multi-Agent AI Shopping Copilot',
+        categoryLabel: 'AGENTIC AI & LANGGRAPH',
         description:
-          'A multi-agent support triage system with retrieval and a critic loop that checks answers before they reach the user.',
-        tags: ['LangGraph', 'FastAPI', 'Angular'],
+          'Built an autonomous LangGraph-based multi-agent platform featuring coordinated shopping assistant and customer support agents with persistent state management, context passing, memory, intent-based routing, and RAG validation guardrails.',
+        tags: ['Python', 'LangGraph', 'Multi-Agent Systems', 'RAG', 'State Management', 'Agent Routing'],
         ghostWord: 'AGENTS',
-        caseStudyUrl: '/case-study/support-copilot',
+        caseStudyUrl: '/case-study/ecommerce-multi-agent-copilot',
+        githubUrl: 'https://github.com/Satyamglacs22',
         architectureDetails:
-          'Multi-agent graph with triage router, dynamic tool-execution nodes, semantic cache and verification critic loop.'
+          'LangGraph multi-agent state graph orchestrating autonomous shopping assistant and customer support agents with intent routing, semantic cache, and RAG grounding.'
       },
       {
-        id: 'agent-commerce',
+        id: 'enterprise-banking-rag',
         index: '02',
-        name: 'AgentCommerce',
-        categoryLabel: 'AI MULTI-AGENT E-COMMERCE',
+        name: 'Enterprise Banking Policy & Compliance RAG Platform',
+        categoryLabel: 'ENTERPRISE RAG & CHROMADB',
         description:
-          'An e-commerce experience where cooperating AI agents search, compare and assist, wrapped in a premium dark interface.',
-        tags: ['Angular', 'Agents'],
-        ghostWord: 'COMMERCE',
-        caseStudyUrl: '/case-study/agent-commerce',
+          'Built an enterprise-oriented Retrieval-Augmented Generation (RAG) platform for high-precision retrieval across complex banking policy and compliance documentation with ChromaDB vector search and source-citation grounded responses.',
+        tags: ['Python', 'FastAPI', 'Angular', 'ChromaDB', 'RAG', 'Semantic Search', 'Vector Retrieval'],
+        ghostWord: 'RAG',
+        caseStudyUrl: '/case-study/enterprise-banking-rag',
+        githubUrl: 'https://github.com/Satyamglacs22',
         architectureDetails:
-          'Specialized conversational agents sharing contextual state memory with ChromaDB product embeddings.'
-      },
-      {
-        id: 'meeting-iq',
-        index: '03',
-        name: 'MeetingIQ',
-        categoryLabel: 'AI MEETING INTELLIGENCE',
-        description:
-          'A platform that turns meetings into searchable knowledge with retrieval, summaries and tool integrations.',
-        tags: ['ASP.NET Core', 'RAG', 'Semantic Kernel', 'MCP'],
-        ghostWord: 'MEETINGS',
-        caseStudyUrl: '/case-study/meeting-iq',
-        architectureDetails:
-          '.NET Core ingestion pipeline chunking transcripts into vector embeddings with semantic Q&A over meeting artifacts.'
+          'Document chunking pipelines, semantic embeddings, vector similarity retrieval with ChromaDB, multilingual search, and strict citation grounding without hallucinations.'
       },
       {
         id: 'connect-sphere',
-        index: '04',
-        name: 'ConnectSphere',
-        categoryLabel: 'FULL-STACK SOCIAL PLATFORM',
+        index: '03',
+        name: 'ConnectSphere — Microservices Social Media Platform',
+        categoryLabel: 'DISTRIBUTED MICROSERVICES',
         description:
-          'A social media application built on a microservices backend with a responsive Angular client.',
-        tags: ['Angular', '.NET 8', 'Microservices'],
+          'Built a full-stack social media platform with 8 microservices behind a YARP API Gateway, using RabbitMQ for async event-driven communication and Redis for feed caching, containerized with Docker Compose.',
+        tags: ['C#', '.NET 8', 'Angular 21', 'Redis', 'RabbitMQ', 'Docker', 'YARP'],
         ghostWord: 'CONNECT',
         caseStudyUrl: '/case-study/connect-sphere',
         githubUrl: 'https://github.com/Satyamglacs22',
         architectureDetails:
-          '8 distributed .NET 8 microservices unified behind a YARP API Gateway with RabbitMQ event messaging and Redis feed caching.'
+          '8 distributed .NET 8 microservices behind YARP API Gateway, asynchronous RabbitMQ event bus, Redis feed caching, JWT security, and Angular 21 SSR frontend.'
+      },
+      {
+        id: 'healthcare-management-system',
+        index: '04',
+        name: 'Healthcare Management System',
+        categoryLabel: 'BACKEND & DATABASE ARCHITECTURE',
+        description:
+          'Developed a robust database-driven application to manage patient records, clinical schedules, and doctor appointments with full CRUD operations and optimized SQL Server query connectivity.',
+        tags: ['C#', '.NET', 'SQL Server', 'Database Design', 'REST APIs', 'CRUD'],
+        ghostWord: 'HEALTH',
+        caseStudyUrl: '/case-study/healthcare-management-system',
+        githubUrl: 'https://github.com/Satyamglacs22',
+        architectureDetails:
+          'High-throughput relational schema design, connection pooling, transactional integrity, clinical scheduling engine, and optimized SQL Server connectivity.'
+      }
+    ],
+    archiveHeading: 'MORE SELECTED WORKS & CAPSTONES',
+    archiveIntro:
+      'A collection of real-time telemetry dashboards, financial analytics applications, and browser media projects built across the full stack.',
+    archiveItems: [
+      {
+        id: 'environmental-monitoring',
+        title: 'Environmental Monitoring Dashboard',
+        category: 'Real-Time Telemetry & IoT',
+        description:
+          'A real-time environmental telemetry dashboard built with HTML, CSS, JavaScript, and Node.js to monitor air and water quality metrics.',
+        tags: ['Node.js', 'HTML5', 'CSS3', 'JavaScript', 'REST APIs'],
+        githubUrl: 'https://github.com/Satyamglacs22/Environmental-Monitoring-DashBoard.git',
+        demoVideoUrl: 'WeatherDashBoardWorking.mp4',
+        icon: 'chart'
+      },
+      {
+        id: 'expense-tracker',
+        title: 'Smart Expense Tracker',
+        category: 'Finance Analytics',
+        description:
+          'Web application that allows users to record income/expenses, filter categorized transactions, and visualize monthly cash flow with interactive charts.',
+        tags: ['JavaScript', 'Chart.js', 'Local Storage', 'Analytics'],
+        githubUrl: 'https://github.com/Satyamglacs22/Expense-Tracker.git',
+        demoVideoUrl: 'ExpenseTrackerWorking.mp4',
+        icon: 'wallet'
+      },
+      {
+        id: 'portfolio-legacy',
+        title: 'Interactive Portfolio Website (Legacy)',
+        category: 'Developer Showcase',
+        description:
+          'Personal developer showcase highlighting skills, interactive UI animations, and project demos built with vanilla web technologies.',
+        tags: ['HTML', 'CSS', 'JavaScript', 'Responsive UI'],
+        githubUrl: 'https://github.com/Satyamglacs22/PortFolio-.git',
+        demoVideoUrl: 'portfolioworkingvideo.mkv',
+        icon: 'user'
+      },
+      {
+        id: 'habit-streak-tracker',
+        title: 'Habit Streak Tracker',
+        category: 'Productivity & Utilities',
+        description:
+          'Modern habit tracker with daily streaks, visual progress bars, completion analytics, and local data persistence.',
+        tags: ['JavaScript', 'Local Storage', 'Analytics', 'DOM APIs'],
+        githubUrl: 'https://github.com/Satyamglacs22',
+        icon: 'fire'
+      },
+      {
+        id: 'webcam-capture',
+        title: 'Web-Cam Snapshot Capture',
+        category: 'Browser Media APIs',
+        description:
+          'Client-side media application utilizing browser MediaStream APIs to capture photos, preview snapshots, and download high-resolution images.',
+        tags: ['Web APIs', 'MediaDevices', 'JavaScript', 'Canvas'],
+        githubUrl: 'https://github.com/Satyamglacs22',
+        icon: 'camera'
       }
     ]
   },
