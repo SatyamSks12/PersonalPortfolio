@@ -7,6 +7,8 @@ import { AboutComponent } from '../../sections/about/about.component';
 import { ExpertiseComponent } from '../../sections/expertise/expertise.component';
 import { WorkIntroComponent } from '../../sections/work-intro/work-intro.component';
 import { ProjectsComponent } from '../../sections/projects/projects.component';
+import { ContactComponent } from '../../sections/contact/contact.component';
+import { FooterComponent } from '../../layout/footer/footer.component';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +20,9 @@ import { ProjectsComponent } from '../../sections/projects/projects.component';
     AboutComponent,
     ExpertiseComponent,
     WorkIntroComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    ContactComponent,
+    FooterComponent
   ],
   template: `
     <!-- Master cinematic intro orchestration (Preloader -> Hello -> Cream Wipe) -->
@@ -40,13 +44,11 @@ import { ProjectsComponent } from '../../sections/projects/projects.component';
       <!-- Section 7.8 Projects: Sticky stacked cards with parallax ghost words -->
       <app-projects />
 
-      <!-- Section 7.9 Contact Anchor -->
-      <section id="contact" style="min-height: 100vh; padding: var(--section-padding-y) var(--gutter-side); background: var(--color-surface); position: relative; z-index: 18;">
-        <span class="label-badge">{{ content.contact.pillLabel }}</span>
-        <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 6vw, 5rem); margin: 20px 0;">
-          {{ content.contact.headlinePrefix }}<span style="color: var(--color-gold);">{{ content.contact.headlineHighlight }}</span>{{ content.contact.headlineSuffix }}
-        </h2>
-      </section>
+      <!-- Section 7.9 Contact: Glass panel form with floating focus & validation -->
+      <app-contact />
+
+      <!-- Section 7.10 Footer: Giant display name, live IST clock & back to top -->
+      <app-footer />
     </main>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -59,3 +61,4 @@ export class HomeComponent {
     this.heroRef()?.playRevealAnimation();
   }
 }
+

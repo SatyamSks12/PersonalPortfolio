@@ -1,0 +1,278 @@
+.contact-section {
+  position: relative;
+  background-color: var(--color-obsidian);
+  color: #ffffff;
+  padding: var(--section-padding-y) var(--gutter-side) 80px;
+  overflow: hidden;
+  z-index: 19;
+
+  // 7.9 Soft radial gold spotlight at the top
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(205, 185, 138, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+// 7.9 Giant ghost word CONTACT at 5% opacity that drifts with scroll
+.contact-ghost-word {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 24vw, 24rem);
+  line-height: 0.8;
+  color: rgba(255, 255, 255, 0.035);
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.contact-layout {
+  position: relative;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(40px, 6vw, 90px);
+  z-index: 3;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+
+.contact-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .contact-headline {
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+
+    .gold-light {
+      color: var(--color-gold);
+      font-weight: 400;
+      font-style: italic;
+    }
+  }
+
+  .contact-intro {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 480px;
+  }
+
+  .info-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+
+    .info-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-radius: 8px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      transition: background 0.3s ease, border-color 0.3s ease;
+
+      &:hover {
+        background: var(--color-surface-hover);
+        border-color: rgba(205, 185, 138, 0.3);
+
+        .card-arrow svg {
+          transform: rotate(45deg);
+          stroke: var(--color-gold);
+        }
+      }
+
+      .card-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .card-label {
+          font-family: var(--font-sans);
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--color-gold);
+        }
+
+        .card-val {
+          font-family: var(--font-sans);
+          font-size: 1rem;
+          font-weight: 600;
+          color: #ffffff;
+        }
+      }
+
+      .card-arrow {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid var(--color-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          width: 16px;
+          height: 16px;
+          stroke: var(--color-text-muted);
+          transition: transform 0.3s ease, stroke 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+// 7.9 Glass panel contact form
+.contact-glass-panel {
+  background: rgba(19, 19, 19, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: clamp(28px, 5vw, 56px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .form-field-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      transition: color 0.3s ease;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 16px;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      color: #ffffff;
+      outline: none;
+      transition: border-color 0.3s ease, background 0.3s ease;
+
+      &:focus {
+        border-color: var(--color-gold);
+        background: rgba(205, 185, 138, 0.04);
+      }
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.25);
+      }
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .error-hint {
+      font-size: 11px;
+      color: #ff6b6b;
+      margin-top: 2px;
+    }
+  }
+
+  // Honeypot field (hidden from view)
+  .hp-field {
+    display: none !important;
+  }
+
+  .submit-btn {
+    position: relative;
+    width: 100%;
+    padding: 18px 32px;
+    background-color: var(--color-gold);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .state-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+
+    &.success {
+      background: rgba(46, 204, 113, 0.15);
+      border: 1px solid rgba(46, 204, 113, 0.4);
+      color: #2ecc71;
+    }
+
+    &.error {
+      background: rgba(231, 76, 60, 0.15);
+      border: 1px solid rgba(231, 76, 60, 0.4);
+      color: #e74c3c;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+  }
+}
+

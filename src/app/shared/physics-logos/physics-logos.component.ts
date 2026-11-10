@@ -175,3 +175,4 @@ export class PhysicsLogosComponent implements OnInit, OnDestroy {
     }
   }
 }
+

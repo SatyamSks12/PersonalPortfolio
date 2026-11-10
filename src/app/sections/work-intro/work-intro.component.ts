@@ -112,3 +112,4 @@ export class WorkIntroComponent implements OnInit, OnDestroy {
     this.scrollTriggerInstance?.kill();
   }
 }
+
