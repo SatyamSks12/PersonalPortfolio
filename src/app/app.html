@@ -6,4 +6,7 @@
 <app-header (menuToggle)="isMenuOpen.set(true)" />
 <app-menu-overlay [isOpen]="isMenuOpen()" (close)="isMenuOpen.set(false)" />
 
+<app-command-palette />
+<app-ai-assistant />
+
 <router-outlet />

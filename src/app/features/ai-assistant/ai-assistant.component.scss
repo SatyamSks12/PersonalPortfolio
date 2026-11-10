@@ -1,0 +1,215 @@
+.assistant-trigger-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  z-index: 10003;
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), background-color 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.assistant-panel-backdrop {
+  position: fixed;
+  right: 24px;
+  bottom: 90px;
+  width: min(420px, calc(100vw - 48px));
+  height: min(580px, calc(100vh - 120px));
+  background: rgba(18, 18, 22, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  z-index: 10004;
+  overflow: hidden;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(10, 10, 10, 0.5);
+
+  .header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .bot-name {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-gold);
+      letter-spacing: 0.05em;
+    }
+
+    .bot-status {
+      font-size: 10px;
+      color: #2ecc71;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      &::before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: #2ecc71;
+      }
+    }
+  }
+
+  .close-icon-btn {
+    color: var(--color-text-muted);
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      color: #ffffff;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.chat-messages-scroll {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message-bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 88%;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.5;
+
+  &.bot {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 10px 10px 10px 2px;
+    padding: 12px 16px;
+    color: rgba(255, 255, 255, 0.9);
+
+    .source-tag {
+      font-size: 10px;
+      color: var(--color-gold);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+  }
+
+  &.user {
+    align-self: flex-end;
+    background: var(--color-gold);
+    color: var(--color-ink);
+    border-radius: 10px 10px 2px 10px;
+    padding: 10px 14px;
+    font-weight: 600;
+  }
+}
+
+.suggested-questions-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+
+  .suggested-btn {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--color-gold);
+    background: rgba(205, 185, 138, 0.08);
+    border: 1px solid rgba(205, 185, 138, 0.2);
+    border-radius: 6px;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(205, 185, 138, 0.16);
+    }
+  }
+}
+
+.chat-input-bar {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid var(--color-border);
+  background: rgba(10, 10, 10, 0.6);
+  gap: 10px;
+
+  input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    outline: none;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .send-msg-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    background: var(--color-gold);
+    color: var(--color-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

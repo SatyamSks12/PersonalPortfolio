@@ -7,6 +7,8 @@ import { CursorComponent } from './layout/cursor/cursor.component';
 import { GrainOverlayComponent } from './layout/grain-overlay/grain-overlay.component';
 import { ScrollProgressComponent } from './layout/scroll-progress/scroll-progress.component';
 import { RouteCurtainComponent } from './shared/route-curtain/route-curtain.component';
+import { AiAssistantComponent } from './features/ai-assistant/ai-assistant.component';
+import { CommandPaletteComponent } from './features/command-palette/command-palette.component';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,9 @@ import { RouteCurtainComponent } from './shared/route-curtain/route-curtain.comp
     CursorComponent,
     GrainOverlayComponent,
     ScrollProgressComponent,
-    RouteCurtainComponent
+    RouteCurtainComponent,
+    AiAssistantComponent,
+    CommandPaletteComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
