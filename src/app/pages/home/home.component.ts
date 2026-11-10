@@ -4,11 +4,12 @@ import { PORTFOLIO_CONTENT } from '../../content/portfolio.content';
 import { IntroMasterComponent } from '../../sections/intro/intro-master.component';
 import { HeroComponent } from '../../sections/hero/hero.component';
 import { AboutComponent } from '../../sections/about/about.component';
+import { ExpertiseComponent } from '../../sections/expertise/expertise.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, IntroMasterComponent, HeroComponent, AboutComponent],
+  imports: [CommonModule, IntroMasterComponent, HeroComponent, AboutComponent, ExpertiseComponent],
   template: `
     <!-- Master cinematic intro orchestration (Preloader -> Hello -> Cream Wipe) -->
     <app-intro-master (introFinished)="onIntroFinished()" />
@@ -20,14 +21,8 @@ import { AboutComponent } from '../../sections/about/about.component';
       <!-- Section 7.5 About Section with string line & pinned portrait zoom -->
       <app-about />
 
-      <!-- Section 7.6 Expertise Anchor -->
-      <section id="expertise" style="min-height: 100vh; padding: var(--section-padding-y) var(--gutter-side); background: var(--color-obsidian); position: relative; z-index: 16;">
-        <span class="label-badge">{{ content.expertise.sectionLabel }}</span>
-        <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 6vw, 5rem); margin: 20px 0;">
-          <span style="color: var(--color-text-muted);">{{ content.expertise.headingPrefix }}</span>
-          <span style="color: #ffffff;">{{ content.expertise.headingMain }}</span>
-        </h2>
-      </section>
+      <!-- Section 7.6 Expertise with floating logos & interactive previews -->
+      <app-expertise />
 
       <!-- Section 7.7 & 7.8 Work & Projects Anchor -->
       <section id="work" style="min-height: 100vh; padding: var(--section-padding-y) var(--gutter-side); background: var(--color-obsidian); position: relative; z-index: 17;">
