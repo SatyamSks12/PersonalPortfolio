@@ -194,7 +194,7 @@ export class AiAssistantComponent {
     if (lower.includes('certif') || lower.includes('claude') || lower.includes('stack')) {
       return {
         sender: 'bot',
-        text: 'Satyam holds the official Claude Certified Associate - Foundations credential from Anthropic (Issued Oct 2026), GitHub Certified Agentic AI Developer from Microsoft, and Full Stack Backend using Node.js certification.',
+        text: 'Satyam holds 4 professional certifications: Claude Certified Associate - Foundations (Anthropic, Oct 2026), Claude Certified Developer - Foundations (Anthropic), GitHub Certified: Agentic AI Developer (Microsoft & GitHub), and Full Stack Backend using Node.js (Coding Blocks & GLA University).',
         source: 'portfolio.content.ts (Certifications)'
       };
     }

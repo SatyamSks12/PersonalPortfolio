@@ -9,11 +9,10 @@
 
 .sticky-work-label {
   position: sticky;
-  top: 100px;
+  top: 90px;
   left: var(--gutter-side);
   z-index: 25;
   pointer-events: none;
-  mix-blend-mode: difference;
   padding: 0 var(--gutter-side);
 
   .label-pill {
@@ -24,11 +23,13 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--color-gold);
-    background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(8px);
+    background: rgba(10, 10, 10, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 6px 14px;
     border-radius: 4px;
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(205, 185, 138, 0.35);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   }
 }
 

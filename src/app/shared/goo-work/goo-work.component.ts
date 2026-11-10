@@ -27,22 +27,21 @@ interface Droplet {
   imports: [CommonModule],
   template: `
     <div class="goo-container">
-      <!-- SVG Gooey Filter (Section 7.7) -->
+      <!-- SVG Gooey Filter applied to liquid droplets only -->
       <svg width="0" height="0" style="position: absolute; pointer-events: none;" aria-hidden="true">
         <filter id="gooFilter">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
           <feColorMatrix
             in="blur"
             mode="matrix"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
             result="goo"
           />
-          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
         </filter>
       </svg>
 
-      <div class="goo-filter-wrapper">
-        <h2 #workTitle class="giant-work-word">WORK</h2>
+      <div class="work-word-display">
+        <h2 #workTitle class="giant-work-word" aria-label="WORK">WORK</h2>
         <div #dropletsLayer class="droplets-canvas" aria-hidden="true"></div>
       </div>
     </div>

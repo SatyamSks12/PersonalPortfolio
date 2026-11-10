@@ -227,7 +227,7 @@ export const PORTFOLIO_CONTENT: PortfolioContent = {
     ]
   },
   hero: {
-    giantWord: 'INTELLIGENT',
+    giantWord: 'SOFTWARE',
     secondaryWord: 'ENGINEER',
     miniLabels: ['AGENTS', 'RAG', 'MICROSERVICES'],
     badgeText: "LET'S WORK TOGETHER • LET'S WORK TOGETHER • ",
@@ -238,22 +238,22 @@ export const PORTFOLIO_CONTENT: PortfolioContent = {
   about: {
     sectionLabel: '02 --- THE PERSON BEHIND THE WORK',
     heading: 'ABOUT ME',
-    headlinePart1: 'I BUILD ',
-    headlineHighlight1: 'INTELLIGENT SYSTEMS',
-    headlinePart2: ' WHERE AI MEETS ',
-    headlineHighlight2: 'ENGINEERING',
+    headlinePart1: 'ENGINEERING ',
+    headlineHighlight1: 'AUTONOMOUS AI AGENTS',
+    headlinePart2: ' & HIGH-PERFORMANCE ',
+    headlineHighlight2: '.NET MICROSERVICES',
     headlinePart3: '.',
     paragraph1:
-      "I'm Satyam, a GenAI and backend engineer who turns complex ideas into reliable products: multi-agent workflows, retrieval-augmented systems and microservices that hold up in production.",
+      "I am Satyam Kumar, a Software Analyst at Capgemini based in Bengaluru, India, with a deep technical focus on Generative AI, LangGraph-based multi-agent systems, and scalable .NET 8 backend microservices. I specialize in turning complex architectural challenges into robust production systems—from designing autonomous agent state machines with long-term memory and intent routing to engineering low-latency RAG platforms powered by vector databases like ChromaDB.",
     paragraph2:
-      'I care about the details most people never see: how an agent recovers from a bad answer, how a service scales, how an interface feels when it responds. Clean architecture first, then polish.',
+      "My engineering philosophy bridges rigorous backend discipline with modern AI workflows: building event-driven microservices with RabbitMQ, Redis, and YARP API Gateway, adhering to Clean Architecture principles, and establishing strict AI evaluation guardrails with LangSmith to prevent hallucinations. With a B.Tech in Computer Science from GLA University (7.96 CPI) and 100+ Data Structures & Algorithms problems solved, I build software that is fast, resilient, and enterprise-ready.",
     stats: [
-      { label: 'BASED', value: 'India' },
-      { label: 'FOCUS', value: 'GenAI + Backend' },
-      { label: 'STACK', value: '.NET, Python, Angular' },
-      { label: 'MINDSET', value: 'Ship, measure, improve' },
-      { label: 'PROJECTS', value: '4+', countTo: 4 },
-      { label: 'AVAILABILITY', value: 'Open to opportunities' }
+      { label: 'ROLE', value: 'Software Analyst' },
+      { label: 'ORGANIZATION', value: 'Capgemini' },
+      { label: 'CORE STACK', value: '.NET 8, Python, Angular' },
+      { label: 'ACADEMICS', value: 'B.Tech CSE (7.96 CPI)' },
+      { label: 'DSA SOLVED', value: '100+ Problems' },
+      { label: 'CERTIFICATIONS', value: '4 Professional' }
     ]
   },
   expertise: {
@@ -457,8 +457,18 @@ export const PORTFOLIO_CONTENT: PortfolioContent = {
         }
       },
       {
+        name: 'Claude Certified Developer - Foundations',
+        issuer: 'Anthropic',
+        issueDate: 'Issued Oct 2026',
+        skills:
+          'Frontier foundation models, Anthropic API integration, Claude SDKs, structured outputs, prompt engineering, context management, and model grounding.',
+        badgeColor: '#CC785C',
+        issuerLogoUrl: '/assets/img/anthropic-logo.png'
+      },
+      {
         name: 'GitHub Certified: Agentic AI Developer',
         issuer: 'Microsoft & GitHub',
+        issueDate: 'Issued 2026',
         skills:
           'Multi-agent architectures, autonomous agent workflows, state machine orchestration, tool use, agent memory.',
         badgeColor: '#58A6FF'
@@ -466,8 +476,8 @@ export const PORTFOLIO_CONTENT: PortfolioContent = {
       {
         name: 'Full Stack Backend using Node.js',
         issuer: 'Coding Blocks & GLA University',
-        issueDate: 'July 2024',
-        skills: 'Backend web development, asynchronous microservices, REST APIs, database connectivity.',
+        issueDate: 'Issued July 2024',
+        skills: 'Backend web development, asynchronous microservices, REST APIs, database connectivity, and telemetry dashboard systems.',
         badgeColor: '#3ECF8E'
       }
     ],

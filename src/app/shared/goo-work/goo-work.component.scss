@@ -6,39 +6,46 @@
   align-items: center;
   justify-content: center;
   overflow: visible;
+  padding: 10px 0;
 }
 
-.goo-filter-wrapper {
+.work-word-display {
   position: relative;
-  filter: url(#gooFilter);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: clamp(240px, 45vh, 480px);
+  margin: 0 auto;
 }
 
 .giant-work-word {
   font-family: var(--font-display);
-  font-size: clamp(5rem, 28vw, 24rem);
-  line-height: 0.85;
-  color: var(--color-gold);
+  font-size: clamp(4.5rem, 16vw, 14rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
   user-select: none;
   z-index: 2;
   will-change: transform;
+  text-align: center;
+  margin: 0;
+  padding: 0 16px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5E8C7 35%, #CDB98A 70%, #9B834F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 10px 30px rgba(205, 185, 138, 0.22));
 }
 
 .droplets-canvas {
   position: absolute;
-  top: 0;
+  top: 55%;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 80px;
   pointer-events: none;
   z-index: 1;
+  filter: url(#gooFilter);
 
   .droplet {
     position: absolute;
