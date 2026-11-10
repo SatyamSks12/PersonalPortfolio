@@ -39,6 +39,7 @@
             },
             "server": "src/main.server.ts",
             "outputMode": "server",
+            "deleteOutputPath": false,
             "security": {
               "allowedHosts": []
             },
