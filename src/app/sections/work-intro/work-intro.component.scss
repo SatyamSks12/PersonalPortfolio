@@ -1,0 +1,136 @@
+.work-intro-section {
+  position: relative;
+  background-color: var(--color-obsidian);
+  color: #ffffff;
+  padding: 100px 0 60px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 17;
+}
+
+// 7.7 Top horizontal strip sliding sideways with scroll
+.tech-strip-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 60px;
+
+  .tech-strip-track {
+    display: flex;
+    gap: clamp(30px, 5vw, 60px);
+    width: max-content;
+    white-space: nowrap;
+    will-change: transform;
+
+    .strip-tech-item {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.25);
+      transition: color 0.3s ease;
+
+      &.highlight-center {
+        color: var(--color-gold);
+      }
+    }
+  }
+}
+
+.heading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+
+  .scroll-explore-line {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+  }
+
+  .vertical-indicator-line {
+    width: 1.5px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--color-gold), transparent);
+    animation: lineDrop 2s ease-in-out infinite;
+  }
+}
+
+// 7.7 Bottom marquee with velocity skew
+.bottom-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 60px;
+  padding: 24px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(19, 19, 19, 0.4);
+
+  .marquee-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    white-space: nowrap;
+    animation: marqueeScroll 25s linear infinite;
+    will-change: transform;
+
+    .marquee-item {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      .marquee-plus {
+        color: var(--color-gold);
+      }
+    }
+  }
+}
+
+@keyframes lineDrop {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  50.1% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bottom-marquee-wrapper .marquee-track {
+    animation: none !important;
+  }
+}

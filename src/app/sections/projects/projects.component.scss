@@ -1,0 +1,199 @@
+.projects-section {
+  position: relative;
+  background-color: var(--color-obsidian);
+  color: #ffffff;
+  padding: 0;
+  overflow: visible;
+  z-index: 18;
+}
+
+.sticky-work-label {
+  position: sticky;
+  top: 100px;
+  left: var(--gutter-side);
+  z-index: 25;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  padding: 0 var(--gutter-side);
+
+  .label-pill {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 6px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+  }
+}
+
+.cards-stack-container {
+  position: relative;
+  width: 100%;
+}
+
+.project-card {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(40px, 8vh, 100px) var(--gutter-side);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.7);
+  outline: none;
+  will-change: transform, filter;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: -2px;
+  }
+
+  // 7.8 Hover: dark overlay lightens so background is clearly visible
+  &:hover {
+    .card-bg-overlay {
+      background: radial-gradient(circle at center, rgba(10, 10, 10, 0.65) 0%, rgba(10, 10, 10, 0.85) 100%);
+    }
+
+    .project-card-link-title {
+      color: var(--color-gold);
+    }
+  }
+}
+
+.card-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+
+  .card-diagram-bg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.25;
+    background: radial-gradient(circle at 60% 40%, rgba(205, 185, 138, 0.12) 0%, transparent 60%);
+
+    svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .card-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.95) 100%);
+    transition: background 0.4s ease;
+  }
+}
+
+// 7.8 Huge ghost word in low opacity with parallax
+.card-ghost-word {
+  position: absolute;
+  right: clamp(10px, 4vw, 60px);
+  top: 40%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 20vw, 22rem);
+  line-height: 0.8;
+  color: rgba(255, 255, 255, 0.04);
+  text-transform: uppercase;
+  user-select: none;
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform;
+}
+
+.card-content-wrap {
+  position: relative;
+  z-index: 5;
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .card-meta-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--color-gold);
+    }
+  }
+
+  .project-card-link-title {
+    font-family: var(--font-sans);
+    font-size: clamp(2.4rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    transition: color 0.3s ease;
+    display: inline-block;
+  }
+
+  .card-description {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.3vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 680px;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+
+    .card-tag-pill {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 6px 14px;
+      border-radius: 4px;
+    }
+  }
+}
+
+.card-badge-anchor {
+  position: absolute;
+  right: var(--gutter-side);
+  bottom: clamp(40px, 8vh, 100px);
+  z-index: 10;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}

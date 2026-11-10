@@ -5,11 +5,21 @@ import { IntroMasterComponent } from '../../sections/intro/intro-master.componen
 import { HeroComponent } from '../../sections/hero/hero.component';
 import { AboutComponent } from '../../sections/about/about.component';
 import { ExpertiseComponent } from '../../sections/expertise/expertise.component';
+import { WorkIntroComponent } from '../../sections/work-intro/work-intro.component';
+import { ProjectsComponent } from '../../sections/projects/projects.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, IntroMasterComponent, HeroComponent, AboutComponent, ExpertiseComponent],
+  imports: [
+    CommonModule,
+    IntroMasterComponent,
+    HeroComponent,
+    AboutComponent,
+    ExpertiseComponent,
+    WorkIntroComponent,
+    ProjectsComponent
+  ],
   template: `
     <!-- Master cinematic intro orchestration (Preloader -> Hello -> Cream Wipe) -->
     <app-intro-master (introFinished)="onIntroFinished()" />
@@ -24,11 +34,11 @@ import { ExpertiseComponent } from '../../sections/expertise/expertise.component
       <!-- Section 7.6 Expertise with floating logos & interactive previews -->
       <app-expertise />
 
-      <!-- Section 7.7 & 7.8 Work & Projects Anchor -->
-      <section id="work" style="min-height: 100vh; padding: var(--section-padding-y) var(--gutter-side); background: var(--color-obsidian); position: relative; z-index: 17;">
-        <span class="label-badge">{{ content.projects.sectionLabel }}</span>
-        <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 6vw, 5rem); margin: 20px 0; color: var(--color-gold);">FEATURED PROJECTS</h2>
-      </section>
+      <!-- Section 7.7 Work Intro with tech strip, giant WORK & goo droplets -->
+      <app-work-intro />
+
+      <!-- Section 7.8 Projects: Sticky stacked cards with parallax ghost words -->
+      <app-projects />
 
       <!-- Section 7.9 Contact Anchor -->
       <section id="contact" style="min-height: 100vh; padding: var(--section-padding-y) var(--gutter-side); background: var(--color-surface); position: relative; z-index: 18;">
