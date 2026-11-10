@@ -44,6 +44,15 @@
   flex-direction: column;
   z-index: 10004;
   overflow: hidden;
+
+  @media (max-width: 480px) {
+    right: 12px;
+    left: 12px;
+    bottom: 84px;
+    width: auto;
+    height: calc(100vh - 100px);
+    max-height: 520px;
+  }
 }
 
 .panel-header {

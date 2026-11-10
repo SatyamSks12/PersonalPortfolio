@@ -129,6 +129,22 @@
   text-transform: uppercase;
   color: rgba(14, 14, 14, 0.6);
 
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    .bottom-left, .bottom-right {
+      text-align: center;
+      width: 100%;
+    }
+
+    .scroll-hint-wrapper {
+      order: -1;
+      margin-bottom: 8px;
+    }
+  }
+
   .bottom-left, .bottom-right {
     flex: 1;
   }
