@@ -42,3 +42,10 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# .NET & Python build artifacts
+**/bin/
+**/obj/
+**/__pycache__/
+*.pyc
+
