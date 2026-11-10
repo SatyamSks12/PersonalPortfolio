@@ -6,6 +6,7 @@ import { MenuOverlayComponent } from './layout/menu-overlay/menu-overlay.compone
 import { CursorComponent } from './layout/cursor/cursor.component';
 import { GrainOverlayComponent } from './layout/grain-overlay/grain-overlay.component';
 import { ScrollProgressComponent } from './layout/scroll-progress/scroll-progress.component';
+import { RouteCurtainComponent } from './shared/route-curtain/route-curtain.component';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import { ScrollProgressComponent } from './layout/scroll-progress/scroll-progres
     MenuOverlayComponent,
     CursorComponent,
     GrainOverlayComponent,
-    ScrollProgressComponent
+    ScrollProgressComponent,
+    RouteCurtainComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

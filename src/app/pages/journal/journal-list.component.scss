@@ -1,0 +1,111 @@
+.journal-page {
+  position: relative;
+  background-color: var(--color-obsidian);
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 140px var(--gutter-side) 100px;
+}
+
+.journal-header {
+  max-width: var(--max-content-width);
+  margin: 0 auto 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .journal-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 7vw, 6.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+  }
+
+  .journal-intro {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+  }
+}
+
+.journal-rows-list {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.journal-row {
+  display: grid;
+  grid-template-columns: 180px 1fr auto auto;
+  gap: 24px;
+  align-items: center;
+  padding: 36px 0;
+  border-top: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: padding-left 0.3s ease, border-color 0.3s ease;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  &:hover {
+    padding-left: 16px;
+    border-color: rgba(205, 185, 138, 0.4);
+
+    .post-title {
+      color: var(--color-gold);
+    }
+
+    .arrow-box svg {
+      transform: rotate(45deg);
+      stroke: var(--color-gold);
+    }
+  }
+
+  .post-date {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+  }
+
+  .post-title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+
+  .reading-time {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+  }
+
+  .arrow-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--color-text-dim);
+      transition: transform 0.3s ease, stroke 0.3s ease;
+    }
+  }
+}
+
