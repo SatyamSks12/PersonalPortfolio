@@ -1,0 +1,25 @@
+.cream-wipe-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10006;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+
+  .wipe-cell {
+    background-color: var(--color-cream);
+    transform: scale(0);
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+}
+
