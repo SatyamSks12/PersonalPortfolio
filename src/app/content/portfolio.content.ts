@@ -64,6 +64,12 @@ export interface CertificationItem {
   skills: string;
   credentialUrl?: string;
   badgeColor?: string;
+  issuerLogoUrl?: string;
+  mediaAttachment?: {
+    title: string;
+    thumbnailUrl: string;
+    fullImageUrl?: string;
+  };
 }
 
 export interface EducationItem {
@@ -437,15 +443,24 @@ export const PORTFOLIO_CONTENT: PortfolioContent = {
     ],
     certifications: [
       {
-        name: 'Claude Certified Developer – Foundations',
+        name: 'Claude Certified Associate - Foundations',
         issuer: 'Anthropic',
-        skills: 'Frontier foundation models, prompt engineering, context management, API integration, model grounding.',
-        badgeColor: '#CDB98A'
+        issueDate: 'Issued Oct 2026 · Expires Oct 2027',
+        skills:
+          'Frontier foundation models, Claude 3.5 Sonnet architecture, prompt engineering, context window management, API integration, and grounded reasoning.',
+        badgeColor: '#D97706',
+        issuerLogoUrl: '/assets/img/anthropic-logo.png',
+        mediaAttachment: {
+          title: 'Claude Certified Associate Foundations',
+          thumbnailUrl: '/assets/img/cert-claude-thumb.png',
+          fullImageUrl: '/assets/img/cert-claude-thumb.png'
+        }
       },
       {
         name: 'GitHub Certified: Agentic AI Developer',
         issuer: 'Microsoft & GitHub',
-        skills: 'Multi-agent architectures, autonomous agent workflows, state machine orchestration, tool use, agent memory.',
+        skills:
+          'Multi-agent architectures, autonomous agent workflows, state machine orchestration, tool use, agent memory.',
         badgeColor: '#58A6FF'
       },
       {

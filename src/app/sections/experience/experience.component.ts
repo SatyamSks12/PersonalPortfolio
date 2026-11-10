@@ -7,7 +7,8 @@ import {
   PLATFORM_ID,
   inject,
   NgZone,
-  viewChild
+  viewChild,
+  signal
 } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import gsap from 'gsap';
@@ -105,13 +106,51 @@ import { PORTFOLIO_CONTENT } from '../../content/portfolio.content';
                   <div class="cert-badge-ribbon" [style.background-color]="cert.badgeColor || '#CDB98A'"></div>
                   <div class="cert-body">
                     <div class="cert-header">
-                      <span class="cert-issuer">{{ cert.issuer }}</span>
+                      <div class="cert-issuer-group">
+                        @if (cert.issuerLogoUrl) {
+                          <img [src]="cert.issuerLogoUrl" [alt]="cert.issuer" class="cert-issuer-logo" />
+                        }
+                        <span class="cert-issuer">{{ cert.issuer }}</span>
+                      </div>
                       @if (cert.issueDate) {
                         <span class="cert-date">{{ cert.issueDate }}</span>
                       }
                     </div>
                     <h4 class="cert-name">{{ cert.name }}</h4>
                     <p class="cert-skills">{{ cert.skills }}</p>
+
+                    @if (cert.mediaAttachment; as media) {
+                      <div
+                        class="cert-media-card"
+                        (click)="openCertModal(media)"
+                        role="button"
+                        tabindex="0"
+                        (keydown.enter)="openCertModal(media)"
+                        (keydown.space)="openCertModal(media)"
+                        title="Click to view credential"
+                      >
+                        <div class="media-thumb-box">
+                          <img [src]="media.thumbnailUrl" [alt]="media.title" class="media-thumb-img" />
+                          <div class="media-zoom-overlay">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <circle cx="11" cy="11" r="8"></circle>
+                              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                              <line x1="11" y1="8" x2="11" y2="14"></line>
+                              <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="media-info">
+                          <span class="media-title">{{ media.title }}</span>
+                          <span class="media-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            Verified Credential
+                          </span>
+                        </div>
+                      </div>
+                    }
                   </div>
                 </div>
               }
@@ -154,6 +193,37 @@ import { PORTFOLIO_CONTENT } from '../../content/portfolio.content';
           </div>
         </div>
       </div>
+
+      @if (activeModalImage(); as modal) {
+        <div
+          class="cert-modal-backdrop"
+          (click)="closeCertModal()"
+          (keydown.escape)="closeCertModal()"
+          tabindex="0"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Certificate preview"
+        >
+          <div class="cert-modal-card" (click)="$event.stopPropagation()">
+            <div class="cert-modal-header">
+              <span class="cert-modal-title">{{ modal.title }}</span>
+              <button
+                class="cert-modal-close"
+                (click)="closeCertModal()"
+                aria-label="Close certificate preview"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            <div class="cert-modal-body">
+              <img [src]="modal.url" [alt]="modal.title" class="cert-modal-image" />
+            </div>
+          </div>
+        </div>
+      }
     </section>
   `,
   styleUrl: './experience.component.scss',
@@ -163,6 +233,19 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   content = PORTFOLIO_CONTENT;
 
   sectionRef = viewChild<ElementRef<HTMLElement>>('sectionRef');
+
+  activeModalImage = signal<{ title: string; url: string } | null>(null);
+
+  openCertModal(media: { title: string; fullImageUrl?: string; thumbnailUrl: string }): void {
+    this.activeModalImage.set({
+      title: media.title,
+      url: media.fullImageUrl || media.thumbnailUrl
+    });
+  }
+
+  closeCertModal(): void {
+    this.activeModalImage.set(null);
+  }
 
   private platformId = inject(PLATFORM_ID);
   private ngZone = inject(NgZone);
