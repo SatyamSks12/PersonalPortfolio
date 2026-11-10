@@ -1,0 +1,49 @@
+// Design System Tokens according to Section 4 of Spec
+:root {
+  // 4.1 Colors
+  --color-obsidian: #0a0a0a;
+  --color-surface: #131313;
+  --color-surface-hover: #1c1c1c;
+  --color-cream: #f3ebe2;
+  --color-ink: #0e0e0e;
+  --color-gold: #cdb98a;
+  --color-gold-hover: #dfce9f;
+  --color-gold-glow: rgba(205, 185, 138, 0.25);
+  --color-text-muted: rgba(255, 255, 255, 0.55);
+  --color-text-dim: rgba(255, 255, 255, 0.3);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-focus: rgba(205, 185, 138, 0.4);
+  --color-border-light: rgba(14, 14, 14, 0.12);
+
+  // 4.2 Typography
+  --font-display: 'Anton', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  // 4.3 Layout and Spacing
+  --spacing-base: 8px;
+  --max-content-width: 1440px;
+  --gutter-side: clamp(20px, 4vw, 64px);
+  --section-padding-y: clamp(80px, 14vh, 160px);
+
+  // 4.4 Motion Tokens
+  --ease-power3-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-expo-in-out: cubic-bezier(1, 0, 0, 1);
+  --ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --duration-micro: 0.3s;
+  --duration-standard: 0.8s;
+  --duration-section: 1.1s;
+
+  // 4.5 Texture
+  --grain-opacity: 0.035;
+}
+
+// SCSS Variables for mixins
+$obsidian: #0a0a0a;
+$surface: #131313;
+$cream: #f3ebe2;
+$ink: #0e0e0e;
+$gold: #cdb98a;
+$text-muted: rgba(255, 255, 255, 0.55);
+$border: rgba(255, 255, 255, 0.08);
+$font-display: var(--font-display);
+$font-sans: var(--font-sans);
