@@ -5,6 +5,7 @@ import { IntroMasterComponent } from '../../sections/intro/intro-master.componen
 import { HeroComponent } from '../../sections/hero/hero.component';
 import { AboutComponent } from '../../sections/about/about.component';
 import { ExpertiseComponent } from '../../sections/expertise/expertise.component';
+import { ExperienceComponent } from '../../sections/experience/experience.component';
 import { WorkIntroComponent } from '../../sections/work-intro/work-intro.component';
 import { ProjectsComponent } from '../../sections/projects/projects.component';
 import { ContactComponent } from '../../sections/contact/contact.component';
@@ -19,6 +20,7 @@ import { FooterComponent } from '../../layout/footer/footer.component';
     HeroComponent,
     AboutComponent,
     ExpertiseComponent,
+    ExperienceComponent,
     WorkIntroComponent,
     ProjectsComponent,
     ContactComponent,
@@ -37,6 +39,9 @@ import { FooterComponent } from '../../layout/footer/footer.component';
 
       <!-- Section 7.6 Expertise with floating logos & interactive previews -->
       <app-expertise />
+
+      <!-- Section: Experience & Certifications -->
+      <app-experience />
 
       <!-- Section 7.7 Work Intro with tech strip, giant WORK & goo droplets -->
       <app-work-intro />

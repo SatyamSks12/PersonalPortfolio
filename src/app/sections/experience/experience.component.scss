@@ -1,0 +1,441 @@
+.experience-section {
+  position: relative;
+  background-color: var(--color-obsidian);
+  color: #ffffff;
+  padding: var(--section-padding-y) var(--gutter-side);
+  overflow: hidden;
+  z-index: 17;
+
+  // Faint gold ambient backlight
+  &::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(205, 185, 138, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.experience-header-block {
+  max-width: var(--max-content-width);
+  margin: 0 auto 60px;
+  position: relative;
+  z-index: 1;
+
+  .experience-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin-top: 12px;
+
+    .heading-muted {
+      color: var(--color-text-muted);
+    }
+
+    .heading-white {
+      color: #ffffff;
+    }
+  }
+
+  .experience-intro {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 680px;
+    margin-top: 16px;
+  }
+}
+
+.experience-grid {
+  position: relative;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 6.2fr 5.8fr;
+  gap: clamp(40px, 5vw, 70px);
+  z-index: 1;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+
+.column-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+
+  .column-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(205, 185, 138, 0.1);
+    border: 1px solid rgba(205, 185, 138, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold);
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .column-title {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
+}
+
+// ------------------------------------
+// Left Column: Jobs Timeline
+// ------------------------------------
+.jobs-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.job-card {
+  position: relative;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 28px clamp(20px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+
+  // 2px gold bar on hover
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: var(--color-gold);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+    border-color: rgba(205, 185, 138, 0.3);
+    transform: translateY(-2px);
+
+    &::before {
+      transform: scaleY(1);
+    }
+  }
+
+  .job-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .job-meta-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      .company-name {
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+      }
+
+      .job-badge {
+        font-family: var(--font-sans);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 3px 8px;
+        border-radius: 4px;
+
+        &.current {
+          color: #2ecc71;
+          background: rgba(46, 204, 113, 0.1);
+          border-color: rgba(46, 204, 113, 0.3);
+        }
+      }
+    }
+
+    .job-role {
+      font-family: var(--font-sans);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      margin-top: 2px;
+    }
+
+    .job-time-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--color-text-dim);
+      font-weight: 500;
+
+      .dot-sep {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  .job-summary {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  .job-points-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 2px;
+
+    .job-point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.8);
+
+      .point-chevron {
+        width: 14px;
+        height: 14px;
+        stroke: var(--color-gold);
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .job-skills-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+    .skill-tag {
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      background: rgba(205, 185, 138, 0.06);
+      border: 1px solid rgba(205, 185, 138, 0.16);
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+  }
+}
+
+// ------------------------------------
+// Right Column: Credentials & Education
+// ------------------------------------
+.credentials-column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.certifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cert-card {
+  position: relative;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+    border-color: rgba(205, 185, 138, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .cert-badge-ribbon {
+    width: 5px;
+    flex-shrink: 0;
+  }
+
+  .cert-body {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+
+    .cert-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      .cert-issuer {
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+      }
+
+      .cert-date {
+        font-family: var(--font-sans);
+        font-size: 11px;
+        color: var(--color-text-dim);
+      }
+    }
+
+    .cert-name {
+      font-family: var(--font-sans);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .cert-skills {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--color-text-muted);
+    }
+  }
+}
+
+// Education Card
+.education-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 28px clamp(20px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+    border-color: rgba(205, 185, 138, 0.3);
+  }
+
+  .edu-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    .edu-institution {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+    }
+
+    .edu-cpi-pill {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(205, 185, 138, 0.15);
+      border: 1px solid rgba(205, 185, 138, 0.3);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+  }
+
+  .edu-degree {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .edu-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--color-text-dim);
+
+    .dot-sep {
+      opacity: 0.4;
+    }
+  }
+
+  .edu-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+    .edu-highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.75);
+
+      .gold-bullet {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: var(--color-gold);
+        flex-shrink: 0;
+        margin-top: 7px;
+      }
+    }
+  }
+}
+

@@ -135,6 +135,13 @@ export class CommandPaletteComponent {
       action: () => this.navigateToSection('#expertise')
     },
     {
+      id: 'nav-experience',
+      label: 'Jump to Experience & Certifications',
+      category: 'Navigation',
+      icon: 'link',
+      action: () => this.navigateToSection('#experience')
+    },
+    {
       id: 'nav-contact',
       label: 'Jump to Contact',
       category: 'Navigation',

@@ -20,3 +20,4 @@ COPY --from=builder /app/package*.json ./
 
 EXPOSE 4000
 CMD ["node", "dist/satyam-portfolio/server/server.mjs"]
+

@@ -1,4 +1,4 @@
-.hello-container {
+.welcome-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,19 +10,98 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  overflow: hidden;
+  padding: 0 24px;
 }
 
-.hello-svg {
-  width: min(80vw, 680px);
-  height: min(32vh, 320px);
-  overflow: visible;
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 900px;
+}
 
-  path {
-    stroke: var(--color-gold);
-    stroke-width: 3.2px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
+.welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  background: rgba(205, 185, 138, 0.08);
+  border: 1px solid rgba(205, 185, 138, 0.25);
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+
+  .badge-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
   }
 }
 
+.welcome-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.welcome-line-mask {
+  overflow: hidden;
+  display: block;
+  line-height: 0.95;
+  padding-bottom: 4px;
+}
+
+.welcome-line {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 11vw, 8.5rem);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  color: #ffffff;
+  will-change: transform;
+
+  &.gold-glow {
+    color: var(--color-gold);
+    text-shadow: 0 0 40px rgba(205, 185, 138, 0.35);
+  }
+}
+
+.welcome-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+  font-family: var(--font-sans);
+  font-size: clamp(10px, 1.4vw, 13px);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+
+  .sub-bar {
+    width: 32px;
+    height: 1px;
+    background-color: var(--color-gold);
+    opacity: 0.6;
+  }
+
+  @media (max-width: 640px) {
+    .sub-bar {
+      display: none;
+    }
+  }
+}

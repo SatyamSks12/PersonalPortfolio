@@ -10,26 +10,39 @@ import {
   output,
   viewChild
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 import gsap from 'gsap';
 import { PreloaderService } from '../../../core/preloader.service';
+import { PORTFOLIO_CONTENT } from '../../../content/portfolio.content';
 
 @Component({
   selector: 'app-hello',
   standalone: true,
+  imports: [CommonModule],
   template: `
-    <div #helloRoot class="hello-container" aria-hidden="true">
-      <svg class="hello-svg" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- Original handwritten cursive 'hello' stroke path -->
-        <path
-          #helloPath
-          d="M 30,140 C 35,80 50,20 65,20 C 75,20 65,90 60,145 C 75,100 110,85 110,115 C 110,145 95,145 125,140 
-             M 130,125 C 150,110 170,110 170,125 C 170,145 135,150 145,130 C 155,105 180,105 190,140 
-             M 195,140 C 205,80 220,15 235,15 C 245,15 235,95 230,145 
-             M 240,140 C 250,80 265,15 280,15 C 290,15 280,95 275,145 
-             M 285,130 C 290,105 315,100 330,115 C 345,135 325,155 305,145 C 290,135 305,105 335,120 C 355,130 380,125 400,120"
-        />
-      </svg>
+    <div #welcomeRoot class="welcome-container" aria-hidden="true">
+      <div class="welcome-content">
+        <div #welcomeBadge class="welcome-badge">
+          <span class="badge-dot"></span>
+          {{ content.intro.welcomeBadge }}
+          <span class="badge-dot"></span>
+        </div>
+
+        <h1 class="welcome-heading">
+          <div class="welcome-line-mask">
+            <span #line1 class="welcome-line">{{ content.intro.welcomeLine1 }}</span>
+          </div>
+          <div class="welcome-line-mask">
+            <span #line2 class="welcome-line gold-glow">{{ content.intro.welcomeLine2 }}</span>
+          </div>
+        </h1>
+
+        <div #welcomeSub class="welcome-subtitle">
+          <span class="sub-bar"></span>
+          <span class="sub-text">{{ content.intro.welcomeSubtitle }}</span>
+          <span class="sub-bar"></span>
+        </div>
+      </div>
     </div>
   `,
   styleUrl: './hello.component.scss',
@@ -37,14 +50,18 @@ import { PreloaderService } from '../../../core/preloader.service';
 })
 export class HelloComponent implements OnInit, OnDestroy {
   completed = output<void>();
+  content = PORTFOLIO_CONTENT;
 
   private platformId = inject(PLATFORM_ID);
   private ngZone = inject(NgZone);
   private preloaderService = inject(PreloaderService);
   private isBrowser = isPlatformBrowser(this.platformId);
 
-  helloRoot = viewChild<ElementRef<HTMLDivElement>>('helloRoot');
-  helloPath = viewChild<ElementRef<SVGPathElement>>('helloPath');
+  welcomeRoot = viewChild<ElementRef<HTMLDivElement>>('welcomeRoot');
+  welcomeBadge = viewChild<ElementRef<HTMLDivElement>>('welcomeBadge');
+  line1 = viewChild<ElementRef<HTMLSpanElement>>('line1');
+  line2 = viewChild<ElementRef<HTMLSpanElement>>('line2');
+  welcomeSub = viewChild<ElementRef<HTMLDivElement>>('welcomeSub');
 
   private tl: gsap.core.Timeline | null = null;
 
@@ -60,16 +77,16 @@ export class HelloComponent implements OnInit, OnDestroy {
     }
 
     this.ngZone.runOutsideAngular(() => {
-      const pathEl = this.helloPath()?.nativeElement;
-      const rootEl = this.helloRoot()?.nativeElement;
-      if (!pathEl || !rootEl) {
+      const rootEl = this.welcomeRoot()?.nativeElement;
+      const badgeEl = this.welcomeBadge()?.nativeElement;
+      const l1 = this.line1()?.nativeElement;
+      const l2 = this.line2()?.nativeElement;
+      const subEl = this.welcomeSub()?.nativeElement;
+
+      if (!rootEl || !l1 || !l2 || !badgeEl || !subEl) {
         this.completed.emit();
         return;
       }
-
-      const length = pathEl.getTotalLength();
-      pathEl.style.strokeDasharray = `${length}`;
-      pathEl.style.strokeDashoffset = `${length}`;
 
       this.tl = gsap.timeline({
         onComplete: () => {
@@ -77,18 +94,49 @@ export class HelloComponent implements OnInit, OnDestroy {
         }
       });
 
-      // 7.2 Draw over 2.2s, hold 0.4s, fade out over 0.4s
-      this.tl.to(pathEl, {
-        strokeDashoffset: 0,
-        duration: 2.2,
-        ease: 'power1.inOut'
-      })
-      .to({}, { duration: 0.4 })
-      .to(rootEl, {
-        opacity: 0,
-        duration: 0.4,
-        ease: 'power2.out'
-      });
+      // Initial positions
+      gsap.set(badgeEl, { opacity: 0, y: -16, scale: 0.9 });
+      gsap.set([l1, l2], { yPercent: 115 });
+      gsap.set(subEl, { opacity: 0, y: 16 });
+
+      // Staggered cinematic reveal
+      this.tl
+        .to(badgeEl, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.55,
+          ease: 'power3.out'
+        })
+        .to(
+          [l1, l2],
+          {
+            yPercent: 0,
+            duration: 0.85,
+            stagger: 0.14,
+            ease: 'power4.out'
+          },
+          '-=0.3'
+        )
+        .to(
+          subEl,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power3.out'
+          },
+          '-=0.4'
+        )
+        // Hold on screen
+        .to({}, { duration: 1.3 })
+        // Smooth outro scale and fade out into cream wipe
+        .to(rootEl, {
+          opacity: 0,
+          scale: 1.04,
+          duration: 0.45,
+          ease: 'power2.inOut'
+        });
     });
   }
 
@@ -96,4 +144,3 @@ export class HelloComponent implements OnInit, OnDestroy {
     this.tl?.kill();
   }
 }
-

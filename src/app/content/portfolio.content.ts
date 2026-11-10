@@ -29,7 +29,42 @@ export interface JournalPost {
   contentMarkdown: string;
 }
 
+export interface ExperienceJob {
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  badge?: string;
+  summary: string;
+  points: string[];
+  skills: string[];
+}
+
+export interface CertificationItem {
+  name: string;
+  issuer: string;
+  issueDate?: string;
+  skills: string;
+  credentialUrl?: string;
+  badgeColor?: string;
+}
+
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  location: string;
+  period: string;
+  cpi: string;
+  highlights: string[];
+}
+
 export interface PortfolioContent {
+  intro: {
+    welcomeBadge: string;
+    welcomeLine1: string;
+    welcomeLine2: string;
+    welcomeSubtitle: string;
+  };
   identity: {
     name: string;
     title: string;
@@ -77,6 +112,15 @@ export interface PortfolioContent {
     rows: ExpertiseRow[];
     floatingLogos: { name: string; symbol: string; color: string }[];
   };
+  experience: {
+    sectionLabel: string;
+    headingPrefix: string;
+    headingMain: string;
+    intro: string;
+    jobs: ExperienceJob[];
+    certifications: CertificationItem[];
+    education: EducationItem;
+  };
   workIntro: {
     techStrip: string[];
     headingPrefix: string;
@@ -119,6 +163,12 @@ export interface PortfolioContent {
 }
 
 export const PORTFOLIO_CONTENT: PortfolioContent = {
+  intro: {
+    welcomeBadge: 'GREETINGS',
+    welcomeLine1: 'WELCOME TO',
+    welcomeLine2: 'MY PORTFOLIO',
+    welcomeSubtitle: 'SATYAM KUMAR — GENAI & BACKEND ENGINEER'
+  },
   identity: {
     name: 'Satyam Kumar',
     title: 'GenAI & Backend Engineer',
@@ -136,10 +186,11 @@ export const PORTFOLIO_CONTENT: PortfolioContent = {
   },
   navigation: {
     links: [
-      { label: 'WORK', href: '#work' },
       { label: 'ABOUT', href: '#about' },
-      { label: 'JOURNAL', href: '/journal', isRoute: true },
       { label: 'EXPERTISE', href: '#expertise' },
+      { label: 'EXPERIENCE', href: '#experience' },
+      { label: 'WORK', href: '#work' },
+      { label: 'JOURNAL', href: '/journal', isRoute: true },
       { label: 'CONTACT', href: '#contact' }
     ]
   },
@@ -223,6 +274,93 @@ export const PORTFOLIO_CONTENT: PortfolioContent = {
       { name: 'GSAP', symbol: 'GSAP', color: '#88CE02' },
       { name: 'TypeScript', symbol: 'TS', color: '#3178C6' }
     ]
+  },
+  experience: {
+    sectionLabel: '04 --- JOURNEY & CREDENTIALS',
+    headingPrefix: 'EXPERIENCE & ',
+    headingMain: 'CERTIFICATIONS',
+    intro:
+      'A proven track record of engineering scalable enterprise microservices, designing multi-agent AI architectures, and continuous professional excellence.',
+    jobs: [
+      {
+        role: 'Software Analyst',
+        company: 'Capgemini',
+        location: 'Bengaluru, India',
+        period: 'July 2026 – Present',
+        badge: 'CURRENT',
+        summary:
+          'Designing, developing, and maintaining enterprise-grade backend services and distributed microservices with clean architecture and automated test suites.',
+        points: [
+          'Architecting secure RESTful APIs and distributed microservices using C#, .NET 8, and ASP.NET Core.',
+          'Implementing Clean Architecture, repository patterns, SQL Server connectivity, and high-performance caching.',
+          'Building and orchestrating cutting-edge Generative AI & LangGraph agentic workflows for software automation.'
+        ],
+        skills: ['C#', '.NET 8', 'ASP.NET Core', 'Microservices', 'LangGraph', 'GenAI', 'SQL Server']
+      },
+      {
+        role: 'Engineering Trainee',
+        company: 'Capgemini (Exceller Edge)',
+        location: 'India',
+        period: 'Dec 2025 – May 2026',
+        badge: 'DISTINCTION',
+        summary:
+          'Completed rigorous corporate engineering training in enterprise software development and advanced OOP with outstanding marks.',
+        points: [
+          'Mastered C# and .NET Core enterprise architecture, SOLID principles, and asynchronous design patterns.',
+          'Developed automated test suites utilizing NUnit and FluentAssertions for robust code coverage.',
+          'Implemented performance benchmarking and enterprise debugging across multi-tier backend services.'
+        ],
+        skills: ['C#', '.NET Core', 'NUnit', 'FluentAssertions', 'OOP', 'Clean Code']
+      },
+      {
+        role: 'Full Stack Backend Trainee',
+        company: 'GLA University (Coding Blocks)',
+        location: 'Mathura, India',
+        period: 'June 2024 – July 2024',
+        badge: 'HONORS',
+        summary:
+          'Intensive backend engineering training focusing on asynchronous server runtimes, databases, and REST architecture.',
+        points: [
+          'Constructed full RESTful web APIs and async service architectures using Node.js and Express.',
+          'Engineered an interactive Environmental Telemetry Monitoring Dashboard capstone project with real-time updates.',
+          'Learned database schema design, security best practices, and API performance optimization.'
+        ],
+        skills: ['Node.js', 'Express', 'JavaScript', 'REST APIs', 'Telemetry Dashboard']
+      }
+    ],
+    certifications: [
+      {
+        name: 'Claude Certified Developer – Foundations',
+        issuer: 'Anthropic',
+        skills: 'Frontier foundation models, prompt engineering, context management, API integration, model grounding.',
+        badgeColor: '#CDB98A'
+      },
+      {
+        name: 'GitHub Certified: Agentic AI Developer',
+        issuer: 'Microsoft & GitHub',
+        skills: 'Multi-agent architectures, autonomous agent workflows, state machine orchestration, tool use, agent memory.',
+        badgeColor: '#58A6FF'
+      },
+      {
+        name: 'Full Stack Backend using Node.js',
+        issuer: 'Coding Blocks & GLA University',
+        issueDate: 'July 2024',
+        skills: 'Backend web development, asynchronous microservices, REST APIs, database connectivity.',
+        badgeColor: '#3ECF8E'
+      }
+    ],
+    education: {
+      degree: 'B.Tech in Computer Science & Engineering',
+      institution: 'GLA University, Mathura, Uttar Pradesh',
+      location: 'Mathura, Uttar Pradesh, India',
+      period: 'August 2022 – May 2026',
+      cpi: '7.96 / 10 CPI',
+      highlights: [
+        '100+ Data Structures & Algorithms problems solved across LeetCode, GeeksforGeeks, and CodeChef.',
+        'Global Contest Rank 7671 in LeetCode Weekly Contest (Top 25% of 30,000+ competitors worldwide).',
+        'Specialized in Distributed Systems, Operating Systems, DBMS, and Object-Oriented Software Design.'
+      ]
+    }
   },
   workIntro: {
     techStrip: ['HTML', 'CSS', 'TypeScript', 'Angular', '.NET', 'Python', 'LangGraph', 'GSAP'],
