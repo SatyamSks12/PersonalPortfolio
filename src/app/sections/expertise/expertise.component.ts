@@ -115,6 +115,105 @@ import { PhysicsLogosComponent } from '../../shared/physics-logos/physics-logos.
         </div>
       </div>
 
+      <!-- Grand 9-Category Technical Skills Matrix -->
+      <div class="skills-matrix-wrapper" id="skills">
+        <div class="skills-matrix-header">
+          <span class="label-badge">{{ content.skills.sectionLabel }}</span>
+          <h3 class="skills-matrix-title">{{ content.skills.heading }}</h3>
+          <p class="skills-matrix-intro">{{ content.skills.intro }}</p>
+        </div>
+
+        <div class="skills-categories-grid">
+          @for (cat of content.skills.categories; track cat.title) {
+            <div class="skill-category-card">
+              <div class="category-card-top">
+                <div class="category-icon-box">
+                  @switch (cat.icon) {
+                    @case ('robot') {
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                        <circle cx="12" cy="5" r="2"></circle>
+                        <path d="M12 7v4"></path>
+                        <line x1="8" y1="16" x2="8" y2="16"></line>
+                        <line x1="16" y1="16" x2="16" y2="16"></line>
+                      </svg>
+                    }
+                    @case ('brain') {
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-5.04z"></path>
+                        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-5.04z"></path>
+                      </svg>
+                    }
+                    @case ('vector') {
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                        <line x1="10" y1="6.5" x2="14" y2="6.5"></line>
+                        <line x1="17.5" y1="10" x2="17.5" y2="14"></line>
+                        <line x1="14" y1="17.5" x2="10" y2="17.5"></line>
+                        <line x1="6.5" y1="14" x2="6.5" y2="10"></line>
+                      </svg>
+                    }
+                    @case ('server') {
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+                        <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                      </svg>
+                    }
+                    @case ('network') {
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="2" width="6" height="6" rx="1"></rect>
+                        <rect x="2" y="16" width="6" height="6" rx="1"></rect>
+                        <rect x="16" y="16" width="6" height="6" rx="1"></rect>
+                        <path d="M12 8v5"></path>
+                        <path d="M5 13h14"></path>
+                        <path d="M5 13v3"></path>
+                        <path d="M19 13v3"></path>
+                      </svg>
+                    }
+                    @case ('code') {
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
+                    }
+                    @case ('angular') {
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 7 4 19 12 23 20 19 22 7 12 2"></polygon>
+                        <polygon points="12 6 7 17 9.5 17 10.7 14 13.3 14 14.5 17 17 17 12 6"></polygon>
+                      </svg>
+                    }
+                    @case ('database') {
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                      </svg>
+                    }
+                    @default {
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                      </svg>
+                    }
+                  }
+                </div>
+                <h4 class="category-name">{{ cat.title }}</h4>
+              </div>
+
+              <div class="category-tags-list">
+                @for (tag of cat.tags; track tag) {
+                  <span class="skill-tag-badge">{{ tag }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
       <!-- 7.6 Floating preview card following cursor -->
       <div
         #floatingCard

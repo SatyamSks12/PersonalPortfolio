@@ -283,3 +283,129 @@
   }
 }
 
+// ------------------------------------
+// Technical Skills Matrix (9 Categories)
+// ------------------------------------
+.skills-matrix-wrapper {
+  max-width: var(--max-content-width);
+  margin: 100px auto 0;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--color-border);
+  padding-top: 80px;
+}
+
+.skills-matrix-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 48px;
+
+  .skills-matrix-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .skills-matrix-intro {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    max-width: 650px;
+  }
+}
+
+.skills-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skill-category-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    background-color: var(--color-surface-hover);
+    border-color: rgba(205, 185, 138, 0.35);
+
+    .category-icon-box {
+      color: var(--color-gold);
+      border-color: var(--color-gold);
+    }
+  }
+
+  .category-card-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    .category-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+      flex-shrink: 0;
+      transition: color 0.3s ease, border-color 0.3s ease;
+
+      svg {
+        width: 19px;
+        height: 19px;
+      }
+    }
+
+    .category-name {
+      font-family: var(--font-sans);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  .category-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .skill-tag-badge {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 5px 12px;
+      border-radius: 4px;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+      &:hover {
+        color: var(--color-gold);
+        border-color: rgba(205, 185, 138, 0.35);
+        background: rgba(205, 185, 138, 0.08);
+      }
+    }
+  }
+}
+
+

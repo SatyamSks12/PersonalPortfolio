@@ -23,6 +23,12 @@ export interface ArchiveProjectItem {
   icon: 'chart' | 'wallet' | 'user' | 'fire' | 'camera';
 }
 
+export interface SkillCategory {
+  title: string;
+  icon: 'robot' | 'brain' | 'vector' | 'server' | 'network' | 'code' | 'angular' | 'database' | 'tools';
+  tags: string[];
+}
+
 export interface ExpertiseRow {
   index: string;
   title: string;
@@ -122,6 +128,12 @@ export interface PortfolioContent {
     chips: string[];
     rows: ExpertiseRow[];
     floatingLogos: { name: string; symbol: string; color: string }[];
+  };
+  skills: {
+    sectionLabel: string;
+    heading: string;
+    intro: string;
+    categories: SkillCategory[];
   };
   experience: {
     sectionLabel: string;
@@ -287,6 +299,87 @@ export const PORTFOLIO_CONTENT: PortfolioContent = {
       { name: 'SQL Server', symbol: 'SQL', color: '#CC292B' },
       { name: 'GSAP', symbol: 'GSAP', color: '#88CE02' },
       { name: 'TypeScript', symbol: 'TS', color: '#3178C6' }
+    ]
+  },
+  skills: {
+    sectionLabel: 'TECHNICAL EXPERTISE',
+    heading: 'FULL-STACK & AI CAPABILITIES',
+    intro:
+      'A granular breakdown of frameworks, distributed runtimes, agent architectures, and databases I engineer with daily.',
+    categories: [
+      {
+        title: 'Agentic AI',
+        icon: 'robot',
+        tags: [
+          'LangChain',
+          'LangGraph',
+          'Multi-Agent Systems',
+          'State Management',
+          'Agent Routing',
+          'Workflow Orchestration'
+        ]
+      },
+      {
+        title: 'GenAI & RAG',
+        icon: 'brain',
+        tags: [
+          'Prompt Engineering',
+          'RAG',
+          'Embeddings',
+          'Semantic Search',
+          'Context Management',
+          'Grounded Responses'
+        ]
+      },
+      {
+        title: 'AI Engineering & Vectors',
+        icon: 'vector',
+        tags: [
+          'ChromaDB',
+          'Vector Search',
+          'Similarity Retrieval',
+          'LangSmith',
+          'Tracing & Eval',
+          'Guardrails',
+          'Context Engineering'
+        ]
+      },
+      {
+        title: 'Backend Engineering',
+        icon: 'server',
+        tags: ['FastAPI', 'ASP.NET Core', '.NET 8', 'REST APIs', 'SQLAlchemy']
+      },
+      {
+        title: 'Microservices & Architecture',
+        icon: 'network',
+        tags: [
+          'RabbitMQ',
+          'Redis',
+          'API Gateway (YARP)',
+          'JWT Authentication',
+          'Event-Driven Architecture'
+        ]
+      },
+      {
+        title: 'Programming Languages',
+        icon: 'code',
+        tags: ['Python', 'C#', 'JavaScript', 'TypeScript']
+      },
+      {
+        title: 'Frontend Development',
+        icon: 'angular',
+        tags: ['Angular', 'Signals', 'RxJS', 'SSR', 'Modern CSS']
+      },
+      {
+        title: 'Databases & Caching',
+        icon: 'database',
+        tags: ['SQL Server', 'SQLite', 'Redis', 'MySQL']
+      },
+      {
+        title: 'Tools & Platforms',
+        icon: 'tools',
+        tags: ['Git', 'GitHub', 'Docker', 'Postman', 'VS Code', 'Visual Studio']
+      }
     ]
   },
   experience: {
