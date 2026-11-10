@@ -34,3 +34,4 @@
 - **Floating Tech Logos**: 8 SVG logos (Angular, .NET, Python, FastAPI, LangGraph, SQL Server, GSAP, TypeScript) with zero-gravity drift and pointer repulsion using Matter.js (desktop) and GSAP matchMedia fallback (mobile).
 - **Goo Effect**: Canvas/SVG gooey filter with dynamic gold droplets merging into "WORK" heading.
 - **WebGL Hero Warp**: OGL plane displacement noise shader with SVG turbulence fallback for non-WebGL/touch environments.
+
