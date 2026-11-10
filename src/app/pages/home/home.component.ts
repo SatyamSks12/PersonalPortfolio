@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { PORTFOLIO_CONTENT } from '../../content/portfolio.content';
 import { IntroMasterComponent } from '../../sections/intro/intro-master.component';
 import { HeroComponent } from '../../sections/hero/hero.component';
+import { AboutComponent } from '../../sections/about/about.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, IntroMasterComponent, HeroComponent],
+  imports: [CommonModule, IntroMasterComponent, HeroComponent, AboutComponent],
   template: `
     <!-- Master cinematic intro orchestration (Preloader -> Hello -> Cream Wipe) -->
     <app-intro-master (introFinished)="onIntroFinished()" />
@@ -16,18 +17,8 @@ import { HeroComponent } from '../../sections/hero/hero.component';
       <!-- 7.4 Hero Section with liquid warp, condensed type & rotating badge -->
       <app-hero #heroRef />
 
-      <!-- Section 7.5 About Section Anchor -->
-      <section id="about" style="min-height: 100vh; padding: var(--section-padding-y) var(--gutter-side); background: var(--color-surface); position: relative; z-index: 15;">
-        <span class="label-badge">{{ content.about.sectionLabel }}</span>
-        <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 6vw, 5rem); margin: 20px 0; color: var(--color-gold);">{{ content.about.heading }}</h2>
-        <p style="font-size: 1.5rem; max-width: 800px; line-height: 1.4;">
-          {{ content.about.headlinePart1 }}
-          <strong style="color: var(--color-gold);">{{ content.about.headlineHighlight1 }}</strong>
-          {{ content.about.headlinePart2 }}
-          <strong style="color: var(--color-gold);">{{ content.about.headlineHighlight2 }}</strong>
-          {{ content.about.headlinePart3 }}
-        </p>
-      </section>
+      <!-- Section 7.5 About Section with string line & pinned portrait zoom -->
+      <app-about />
 
       <!-- Section 7.6 Expertise Anchor -->
       <section id="expertise" style="min-height: 100vh; padding: var(--section-padding-y) var(--gutter-side); background: var(--color-obsidian); position: relative; z-index: 16;">
